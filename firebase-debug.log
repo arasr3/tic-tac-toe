@@ -1,0 +1,37 @@
+[debug] [2024-06-07T17:28:34.440Z] ----------------------------------------------------------------------
+[debug] [2024-06-07T17:28:34.444Z] Command:       /nix/store/2hxfkbdbwh2s7rc20khzq8sjnywq0xs8-nodejs-18.19.1/bin/node /nix/store/9cksgsmi7xwqm3js1z92zhib6rnrjdcg-firebase-tools-13.9.0/lib/node_modules/firebase-tools/lib/bin/firebase.js init hosting
+[debug] [2024-06-07T17:28:34.445Z] CLI Version:   13.9.0
+[debug] [2024-06-07T17:28:34.446Z] Platform:      linux
+[debug] [2024-06-07T17:28:34.446Z] Node Version:  v18.19.1
+[debug] [2024-06-07T17:28:34.446Z] Time:          Fri Jun 07 2024 17:28:34 GMT+0000 (Coordinated Universal Time)
+[debug] [2024-06-07T17:28:34.447Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-06-07T17:28:34.458Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/user/tic-tac-toe
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2024-06-07T17:29:56.411Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2024-06-07T17:29:56.507Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 403
+[debug] [2024-06-07T17:29:56.507Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2024-06-07T17:29:56.508Z] HTTP Error: 403, Firebase Management API has not been used in project 945553600981 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/firebase.googleapis.com/overview?project=945553600981 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.
+[debug] [2024-06-07T17:29:56.510Z] FirebaseError: HTTP Error: 403, Firebase Management API has not been used in project 945553600981 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/firebase.googleapis.com/overview?project=945553600981 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.
+    at responseToError (/nix/store/9cksgsmi7xwqm3js1z92zhib6rnrjdcg-firebase-tools-13.9.0/lib/node_modules/firebase-tools/lib/responseToError.js:49:12)
+    at RetryOperation._fn (/nix/store/9cksgsmi7xwqm3js1z92zhib6rnrjdcg-firebase-tools-13.9.0/lib/node_modules/firebase-tools/lib/apiv2.js:305:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: Failed to list Firebase projects. See firebase-debug.log for more info.

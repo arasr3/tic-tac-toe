@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tic Tac Toe Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #board {
+            display: flex;
+            flex-direction: column;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .cell {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            cursor: pointer;
+            margin: 2px;
+            background-color: #e2f0cb;
+            color: #333;
+            transition: background-color 0.3s;
+        }
+
+        .cell:hover {
+            background-color: #d5ecc2;
+        }
+
+        .cell.X {
+            color: #f94144;
+        }
+
+        .cell.O {
+            color: #577590;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tic Tac Toe Game Salih ALAN</h1>
+    <div id="board"></div>
+
+    <script>
+        const board = document.getElementById('board');
+        const size = 3;
+        let turn = 'X';
+        let cells = Array.from({ length: size }, () => Array(size).fill(''));
+
+        function createBoard() {
+            for (let i = 0; i < size; i++) {
+                const row = document.createElement('div');
+                row.classList.add('row');
+                for (let j = 0; j < size; j++) {
+                    const cell = document.createElement('div');
+                    cell.classList.add('cell');
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    cell.addEventListener('click', cellClicked);
+                    row.appendChild(cell);
+                }
+                board.appendChild(row);
+            }
+        }
+
+        function cellClicked() {
+            const row = this.dataset.row;
+            const col = this.dataset.col;
+
+            if (cells[row][col] === '') {
+                cells[row][col] = turn;
+                this.textContent = turn;
+                this.classList.add(turn);
+                if (checkWin(row, col)) {
+                    alert(`${turn} wins!`);
+                    resetGame();
+                } else if (checkDraw()) {
+                    alert("It's a draw!");
+                    resetGame();
+                } else {
+                    turn = turn === 'X' ? 'O' : 'X';
+                }
+            }
+        }
+
+        function checkWin(row, col) {
+            const symbol = cells[row][col];
+            // Check row
+            if (cells[row].every(cell => cell === symbol)) return true;
+            // Check column
+            if (cells.every(r => r[col] === symbol)) return true;
+            // Check diagonal
+            if (row === col && cells.every((r, i) => r[i] === symbol)) return true;
+            if (row + col === size - 1 && cells.every((r, i) => r[size - 1 - i] === symbol)) return true;
+
+            return false;
+        }
+
+        function checkDraw() {
+            return cells.every(row => row.every(cell => cell !== ''));
+        }
+
+        function resetGame() {
+            cells = Array.from({ length: size }, () => Array(size).fill(''));
+            board.innerHTML = '';
+            createBoard();
+        }
+
+        createBoard();
+    </script>
+</body>
+
+</html>
+
